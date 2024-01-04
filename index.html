@@ -4,30 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Number Guessing Game</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./fontawesome-free/css/all.css">
 </head>
 <body>
 
-<script>
-    // Generate a random number between 1 and 10
+    <div class="container">
+        <h2>Number Guessing Game</h2>
+        <h5>Write a random number</h5>
+        <fieldset>
+            <input type="text" id="input">
+            <i class="fa solid fa-gamepad"></i>
+        </fieldset>
+        <p id="answer"></p>
+        <button id="btn" onclick="showAnswer()">Submit</button>
+    </div>
+
+ <script>
+    function showAnswer(){
     const secretNumber = Math.floor(Math.random() * 10) + 1;
-
-    // Ask the user to guess the number
-    const userGuess = prompt("Guess the number between 1 and 10:");
-
-    // Convert the user's input to a number
+    const userGuess = document.getElementById('input').value;
     const guess = parseInt(userGuess);
 
+    
     // Check if the guess is correct and provide feedback
     if (!isNaN(guess)) {
         if (guess === secretNumber) {
-            alert("Congratulations! You guessed the correct number.");
-        } else {
-            alert(`Sorry, the correct number was ${secretNumber}. Better luck next time!`);
+            document.getElementById('answer').innerHTML = "Congratulations! You guessed the correct number.";
         }
-    } else {
-        alert("Invalid input. Please enter a valid number.");
+         else {
+            document.getElementById('answer').innerHTML = `Sorry, the correct number was ${secretNumber}. Better luck next time!`;
+        }
     }
-</script>
+     else {
+        document.getElementById('answer').innerHTML = "Invalid input. Please enter a valid number.";
+    }
+}
+</script> 
+
+
+
+
 
 </body>
 </html>
